@@ -1,0 +1,30 @@
+<%- include('partials/head') %>
+<%- include('partials/sidebar') %>
+<div class="main-content">
+  <%- include('partials/topbar') %>
+  <div class="stat-card">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead><tr><th>Date</th><th>Customer</th><th>Phone</th><th>Project</th><th>Plot No</th><th>Sq/Ft</th><th>Amount</th><th>Status</th></tr></thead>
+        <tbody>
+          <% bookings.forEach(b => { %>
+          <tr>
+            <td><%= new Date(b.booking_date).toLocaleDateString('en-IN') %></td>
+            <td><%= b.customer_name %></td>
+            <td><%= b.customer_phone || '-' %></td>
+            <td><%= b.project_name || '-' %></td>
+            <td><%= b.plot_no || '-' %></td>
+            <td><%= Number(b.sqft).toLocaleString() %></td>
+            <td>₹<%= Number(b.amount).toLocaleString('en-IN') %></td>
+            <td><span class="badge bg-<%= b.status==='confirmed' ? 'success' : (b.status==='cancelled' ? 'danger' : 'warning') %>"><%= b.status %></span></td>
+          </tr>
+          <% }) %>
+          <% if (bookings.length === 0) { %>
+          <tr><td colspan="8" class="text-center text-muted py-4">No bookings yet.</td></tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>

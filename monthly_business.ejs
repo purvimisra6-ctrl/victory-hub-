@@ -1,0 +1,27 @@
+<%- include('partials/head') %>
+<%- include('partials/sidebar') %>
+<div class="main-content">
+  <%- include('partials/topbar') %>
+  <div class="stat-card">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead><tr><th>Month</th><th>Self Sq/Ft</th><th>Self Amount</th><th>Team Sq/Ft</th><th>Team Amount</th></tr></thead>
+        <tbody>
+          <% rows.forEach(r => { %>
+          <tr>
+            <td><%= r.month %></td>
+            <td><%= Number(r.self_sqft).toLocaleString() %></td>
+            <td>₹<%= Number(r.self_amount).toLocaleString('en-IN') %></td>
+            <td><%= Number(r.team_sqft).toLocaleString() %></td>
+            <td>₹<%= Number(r.team_amount).toLocaleString('en-IN') %></td>
+          </tr>
+          <% }) %>
+          <% if (rows.length === 0) { %>
+          <tr><td colspan="5" class="text-center text-muted py-4">No business recorded yet.</td></tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>

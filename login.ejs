@@ -1,0 +1,17 @@
+<%- include('partials/head') %>
+<div class="auth-wrap">
+  <div class="auth-card">
+    <h4 class="text-center mb-1"><%= companyName %></h4>
+    <p class="text-center text-muted mb-4">Associate Login</p>
+    <% if (error) { %><div class="alert alert-danger py-2"><%= error %></div><% } %>
+    <form method="POST" action="/login">
+      <div class="mb-3"><label class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" required autofocus></div>
+      <div class="mb-3"><label class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" required></div>
+      <button class="btn btn-primary w-100" type="submit">Login</button>
+    </form>
+    <p class="text-center mt-3 mb-0 small text-muted">Have a referral link from your sponsor? Use that to <a href="/signup">join</a> instead.</p>
+  </div>
+</div>
+<%- include('partials/footer') %>

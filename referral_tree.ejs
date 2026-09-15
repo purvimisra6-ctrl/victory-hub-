@@ -1,0 +1,26 @@
+<%- include('partials/head') %>
+<%- include('partials/sidebar') %>
+<div class="main-content">
+  <%- include('partials/topbar') %>
+  <div class="stat-card tree">
+    <p class="text-muted">Your entire downline, unlimited levels deep.</p>
+    <%
+      function renderNode(node) {
+    %>
+    <ul>
+      <li>
+        <span class="node"><strong><%= node.name %></strong> — <%= node.email %> <span class="badge bg-secondary"><%= node.status %></span></span>
+        <% if (node.children && node.children.length) { %>
+          <% node.children.forEach(child => { renderNode(child); }) %>
+        <% } %>
+      </li>
+    </ul>
+    <% } %>
+    <% if (treeData.length === 0) { %>
+      <p class="text-muted text-center py-4">You have no referrals yet. Share your link from "Referral Work" to start building your team.</p>
+    <% } else { %>
+      <% treeData.forEach(node => { renderNode(node); }) %>
+    <% } %>
+  </div>
+</div>
+<%- include('partials/footer') %>

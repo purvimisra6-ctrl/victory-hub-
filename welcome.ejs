@@ -1,0 +1,17 @@
+<%- include('partials/head') %>
+<%- include('partials/sidebar') %>
+<div class="main-content">
+  <%- include('partials/topbar') %>
+  <div class="stat-card text-start">
+    <h4>Welcome to <%= companyName %>, <%= currentAssociate.name %>!</h4>
+    <p class="text-muted mt-3">This is your personal Associate Hub. From here you can:</p>
+    <ul class="text-muted">
+      <li>Track your own sales and your team's sales in real time</li>
+      <li>See exactly how much commission you've earned and been paid</li>
+      <li>Grow your team using your unique referral link (unlimited levels — everyone you bring in, and everyone they bring in, stays connected to you)</li>
+      <li>Monitor plot/inventory availability</li>
+    </ul>
+    <p class="text-muted">Your referral code: <strong><%= currentAssociate.referral_code %></strong></p>
+  </div>
+</div>
+<%- include('partials/footer') %>

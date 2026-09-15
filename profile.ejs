@@ -1,0 +1,23 @@
+<%- include('partials/head') %>
+<%- include('partials/sidebar') %>
+<div class="main-content">
+  <%- include('partials/topbar') %>
+  <div class="stat-card" style="max-width:560px">
+    <% if (error) { %><div class="alert alert-danger"><%= error %></div><% } %>
+    <% if (success) { %><div class="alert alert-success"><%= success %></div><% } %>
+    <form method="POST" action="/profile">
+      <div class="mb-3"><label class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" value="<%= currentAssociate.name %>" required></div>
+      <div class="mb-3"><label class="form-label">Email (read-only)</label>
+        <input type="email" class="form-control" value="<%= currentAssociate.email %>" disabled></div>
+      <div class="mb-3"><label class="form-label">Phone</label>
+        <input type="text" class="form-control" name="phone" value="<%= currentAssociate.phone %>" required></div>
+      <div class="mb-3"><label class="form-label">City</label>
+        <input type="text" class="form-control" name="city" value="<%= currentAssociate.city || '' %>"></div>
+      <div class="mb-3"><label class="form-label">Note</label>
+        <textarea class="form-control" name="profile_note" rows="3"><%= currentAssociate.profile_note || '' %></textarea></div>
+      <button class="btn btn-primary" type="submit">Save Changes</button>
+    </form>
+  </div>
+</div>
+<%- include('partials/footer') %>

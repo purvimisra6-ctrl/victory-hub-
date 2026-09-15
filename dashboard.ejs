@@ -1,0 +1,52 @@
+<%- include('partials/head') %>
+<%- include('partials/sidebar') %>
+<div class="main-content">
+  <%- include('partials/topbar') %>
+
+  <div class="row g-3 mb-3">
+    <div class="col-6 col-md-3">
+      <div class="stat-card"><div class="value"><%= data.myDirect %></div><div class="label">My Direct</div></div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card"><div class="value"><%= data.myTeam %></div><div class="label">My Team</div></div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card"><div class="value"><%= parseFloat(data.monthlyBusinessSelf.sqft).toLocaleString() %></div><div class="label">Monthly Business (Self) sqft</div></div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card"><div class="value"><%= parseFloat(data.monthlyBusinessTeam.sqft).toLocaleString() %></div><div class="label">Monthly Business (Team) sqft</div></div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card"><div class="value">₹<%= Number(data.totalSelfBusiness.amount).toLocaleString('en-IN') %></div><div class="label">Total Self Business</div></div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card"><div class="value">₹<%= Number(data.totalTeamBusiness.amount).toLocaleString('en-IN') %></div><div class="label">Total Team Business</div></div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card"><div class="value">₹<%= Number(data.myPayout).toLocaleString('en-IN') %></div><div class="label">My Payout</div></div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="stat-card"><div class="value">₹<%= Number(data.myPayment).toLocaleString('en-IN') %></div><div class="label">My Payment</div></div>
+    </div>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="stat-card">
+        <div class="value">₹<%= Number(data.balance).toLocaleString('en-IN') %></div>
+        <div class="label">Balance (Payout - Payment)</div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="stat-card text-start">
+        <h6 class="mb-3">Booking Summary</h6>
+        <p class="mb-1"><strong>Monthly Booking [Self + Team]:</strong>
+          (<%= data.monthlyBusinessSelf.sqft %> + <%= data.monthlyBusinessTeam.sqft %>) SQ/FT</p>
+        <p class="mb-0"><strong>Total Booking [Self + Team]:</strong>
+          (<%= data.totalSelfBusiness.sqft %> + <%= data.totalTeamBusiness.sqft %>) SQ/FT</p>
+        <a href="/customers" class="btn btn-sm btn-primary mt-3">View Full Booking Details</a>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>
