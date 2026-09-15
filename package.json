@@ -1,0 +1,28 @@
+{
+  "name": "company-hub",
+  "version": "1.0.0",
+  "description": "Associate / Business Hub - unlimited-level referral tree with commission payouts",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node scripts/seed.js",
+    "migrate": "node scripts/migrate.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.12.0",
+    "bcryptjs": "^2.4.3",
+    "express-session": "^1.18.0",
+    "connect-pg-simple": "^9.0.1",
+    "ejs": "^3.1.10",
+    "dotenv": "^16.4.5",
+    "express-validator": "^7.1.0",
+    "method-override": "^3.0.0",
+    "nanoid": "^3.3.7",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  }
+}
