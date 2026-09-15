@@ -1,0 +1,21 @@
+<%- include('../partials/head') %>
+<%- include('../partials/admin_sidebar') %>
+<div class="main-content">
+  <div class="topbar"><h5 class="mb-0">Admin Overview</h5></div>
+  <div class="row g-3">
+    <div class="col-6 col-md-3"><div class="stat-card"><div class="value"><%= stats.total_associates %></div><div class="label">Total Associates</div></div></div>
+    <div class="col-6 col-md-3"><div class="stat-card"><div class="value"><%= stats.total_bookings %></div><div class="label">Total Bookings</div></div></div>
+    <div class="col-6 col-md-3"><div class="stat-card"><div class="value">₹<%= Number(stats.total_business).toLocaleString('en-IN') %></div><div class="label">Total Business</div></div></div>
+    <div class="col-6 col-md-3"><div class="stat-card"><div class="value">₹<%= Number(stats.total_payout).toLocaleString('en-IN') %></div><div class="label">Total Commission Payable</div></div></div>
+  </div>
+  <div class="row g-3 mt-1">
+    <div class="col-md-6"><div class="stat-card"><div class="value">₹<%= Number(stats.total_paid).toLocaleString('en-IN') %></div><div class="label">Total Paid Out</div></div></div>
+    <div class="col-md-6"><div class="stat-card"><div class="value">₹<%= Number(stats.total_payout - stats.total_paid).toLocaleString('en-IN') %></div><div class="label">Outstanding Balance (Company Liability)</div></div></div>
+  </div>
+  <div class="mt-3">
+    <a href="/admin/associates/new" class="btn btn-primary me-2"><i class="bi bi-person-plus"></i> Add Associate</a>
+    <a href="/admin/bookings/new" class="btn btn-success me-2"><i class="bi bi-plus-circle"></i> Add Booking</a>
+    <a href="/admin/payments/new" class="btn btn-secondary"><i class="bi bi-cash"></i> Record Payment</a>
+  </div>
+</div>
+<%- include('../partials/footer') %>

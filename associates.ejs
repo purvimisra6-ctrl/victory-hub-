@@ -1,0 +1,38 @@
+<%- include('../partials/head') %>
+<%- include('../partials/admin_sidebar') %>
+<div class="main-content">
+  <div class="topbar"><h5 class="mb-0">Associates (<%= rows.length %>)</h5>
+    <a href="/admin/associates/new" class="btn btn-primary btn-sm"><i class="bi bi-person-plus"></i> Add Associate</a>
+  </div>
+  <div class="stat-card">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle">
+        <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th>Sponsor</th><th>Role</th><th>Status</th><th>Joined</th><th></th></tr></thead>
+        <tbody>
+          <% rows.forEach(a => { %>
+          <tr>
+            <td><%= a.name %></td>
+            <td><%= a.email %></td>
+            <td><%= a.phone %></td>
+            <td><%= a.parent_name || '— (Top)' %></td>
+            <td><span class="badge bg-<%= a.role==='admin' ? 'dark' : 'primary' %>"><%= a.role %></span></td>
+            <td><span class="badge bg-<%= a.status==='active' ? 'success' : 'secondary' %>"><%= a.status %></span></td>
+            <td><%= new Date(a.created_at).toLocaleDateString('en-IN') %></td>
+            <td>
+              <form method="POST" action="/admin/associates/<%= a.id %>/status" class="d-flex gap-1">
+                <select name="status" class="form-select form-select-sm" style="width:auto">
+                  <option value="active" <%= a.status==='active'?'selected':'' %>>Active</option>
+                  <option value="inactive" <%= a.status==='inactive'?'selected':'' %>>Inactive</option>
+                  <option value="blocked" <%= a.status==='blocked'?'selected':'' %>>Blocked</option>
+                </select>
+                <button class="btn btn-sm btn-outline-primary">Update</button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<%- include('../partials/footer') %>

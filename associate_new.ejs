@@ -1,0 +1,31 @@
+<%- include('../partials/head') %>
+<%- include('../partials/admin_sidebar') %>
+<div class="main-content">
+  <div class="topbar"><h5 class="mb-0">Add Associate</h5></div>
+  <div class="stat-card" style="max-width:600px">
+    <% if (error) { %><div class="alert alert-danger"><%= error %></div><% } %>
+    <form method="POST" action="/admin/associates/new">
+      <div class="mb-3"><label class="form-label">Name</label><input class="form-control" name="name" required></div>
+      <div class="mb-3"><label class="form-label">Email</label><input type="email" class="form-control" name="email" required></div>
+      <div class="mb-3"><label class="form-label">Phone</label><input class="form-control" name="phone" required></div>
+      <div class="mb-3"><label class="form-label">City</label><input class="form-control" name="city"></div>
+      <div class="mb-3"><label class="form-label">Password</label><input type="password" class="form-control" name="password" minlength="6" required></div>
+      <div class="mb-3"><label class="form-label">Sponsor (who they report to)</label>
+        <select class="form-select" name="parent_id">
+          <option value="">— None (top of company) —</option>
+          <% sponsors.forEach(s => { %>
+            <option value="<%= s.id %>"><%= s.name %> (<%= s.email %>)</option>
+          <% }) %>
+        </select>
+      </div>
+      <div class="mb-3"><label class="form-label">Role</label>
+        <select class="form-select" name="role">
+          <option value="associate">Associate</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" type="submit">Create</button>
+    </form>
+  </div>
+</div>
+<%- include('../partials/footer') %>
