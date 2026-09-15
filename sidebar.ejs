@@ -1,0 +1,25 @@
+<div class="sidebar">
+  <div class="brand"><i class="bi bi-diagram-3-fill"></i> <%= companyName || 'Company Hub' %></div>
+  <div class="pt-2">
+    <a href="/dashboard" class="<%= activePage==='dashboard' ? 'active' : '' %>"><i class="bi bi-speedometer2"></i> Dashboard</a>
+    <a href="/customers" class="<%= activePage==='customers' ? 'active' : '' %>"><i class="bi bi-people"></i> Customer Details</a>
+    <a href="/monthly-business" class="<%= activePage==='monthly' ? 'active' : '' %>"><i class="bi bi-graph-up"></i> Monthly Business</a>
+    <a href="/payout-detail" class="<%= activePage==='payout' ? 'active' : '' %>"><i class="bi bi-cash-coin"></i> Payout Detail</a>
+    <a href="/team-payout" class="<%= activePage==='team_payout' ? 'active' : '' %>"><i class="bi bi-people-fill"></i> Team Payout Rep.</a>
+    <a href="/payments" class="<%= activePage==='payments' ? 'active' : '' %>"><i class="bi bi-wallet2"></i> Payments</a>
+    <a href="/plots" class="<%= activePage==='plots' ? 'active' : '' %>"><i class="bi bi-geo-alt"></i> Plot Status</a>
+    <a href="/referral-tree" class="<%= activePage==='tree' ? 'active' : '' %>"><i class="bi bi-diagram-2"></i> Referral Tree</a>
+    <a href="/downline" class="<%= activePage==='downline' ? 'active' : '' %>"><i class="bi bi-people"></i> Downline</a>
+    <a href="/referral-work" class="<%= activePage==='referral_work' ? 'active' : '' %>"><i class="bi bi-share"></i> Referral Work</a>
+    <a href="/profile" class="<%= activePage==='profile' ? 'active' : '' %>"><i class="bi bi-person-gear"></i> Profile Edit</a>
+    <a href="/welcome" class="<%= activePage==='welcome' ? 'active' : '' %>"><i class="bi bi-house-heart"></i> Welcome</a>
+    <a href="/change-password" class="<%= activePage==='password' ? 'active' : '' %>"><i class="bi bi-shield-lock"></i> Change Password</a>
+    <% if (currentAssociate && currentAssociate.role === 'admin') { %>
+      <hr style="border-color:rgba(255,255,255,0.15)">
+      <a href="/admin"><i class="bi bi-speedometer"></i> Admin Panel</a>
+    <% } %>
+    <form action="/logout" method="POST" class="mt-2">
+      <button type="submit" class="btn btn-sm btn-outline-light w-100 mt-2"><i class="bi bi-box-arrow-right"></i> Logout</button>
+    </form>
+  </div>
+</div>

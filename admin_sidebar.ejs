@@ -1,0 +1,15 @@
+<div class="sidebar">
+  <div class="brand"><i class="bi bi-shield-lock-fill"></i> Admin - <%= companyName %></div>
+  <div class="pt-2">
+    <a href="/admin" class="<%= activeAdminPage==='overview' ? 'active' : '' %>"><i class="bi bi-speedometer2"></i> Overview</a>
+    <a href="/admin/associates" class="<%= activeAdminPage==='associates' ? 'active' : '' %>"><i class="bi bi-people"></i> Associates</a>
+    <a href="/admin/bookings" class="<%= activeAdminPage==='bookings' ? 'active' : '' %>"><i class="bi bi-journal-plus"></i> Bookings</a>
+    <a href="/admin/payouts" class="<%= activeAdminPage==='payouts' ? 'active' : '' %>"><i class="bi bi-cash-coin"></i> Payouts</a>
+    <a href="/admin/commission-settings" class="<%= activeAdminPage==='commission' ? 'active' : '' %>"><i class="bi bi-percent"></i> Commission Settings</a>
+    <hr style="border-color:rgba(255,255,255,0.15)">
+    <a href="/dashboard"><i class="bi bi-arrow-left-circle"></i> My Associate View</a>
+    <form action="/logout" method="POST" class="mt-2">
+      <button type="submit" class="btn btn-sm btn-outline-light w-100 mt-2"><i class="bi bi-box-arrow-right"></i> Logout</button>
+    </form>
+  </div>
+</div>
